@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from '../views/login';
-import CadastroUsuario from '../views/cadastroUsuario';
+
+import Navbar from '../components/navbar';
 import Rotas from './rotas';
 
 import 'bootswatch/dist/flatly/bootstrap.css'
@@ -9,10 +9,13 @@ import '../custom.css'
 class App extends React.Component {
   render(){
     return(
-      <div>
-        <Rotas />
+      <>
+        <Navbar />
+        <div className="container">
+          <Rotas />
 
-      </div>
+        </div>
+      </>
       )
   };
 }
