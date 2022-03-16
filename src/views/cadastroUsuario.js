@@ -1,5 +1,7 @@
 import React from "react";
 
+import { withRouter } from 'react-router-dom'
+
 import Card from "../components/card";
 import FormGroup from "../components/form-group";
 
@@ -16,6 +18,12 @@ class CadastroUsuario extends React.Component{
         console.log(this.state);
     }
 
+    cancelar = () => {
+        this.props.history.push('/login');
+    }
+
+
+
     render(){
         return (
                 <Card title="Cadastro de Usuário">
@@ -28,7 +36,7 @@ class CadastroUsuario extends React.Component{
                                         className="form-control"
                                         id="inputNome"
                                         nome="nome"
-                                        onChange={e => this.setState({nome: e.target.value})}
+                                        onChange={ e => this.setState( { nome: e.target.value } ) }
                                     />
 
                                 </FormGroup>
@@ -37,7 +45,7 @@ class CadastroUsuario extends React.Component{
                                         className="form-control"
                                         id="inputEmail"
                                         nome="email"
-                                        onChange={e => this.setState({email: e.target.value})}
+                                        onChange={ e => this.setState( { email: e.target.value } ) }
                                     />
 
                                 </FormGroup>
@@ -46,7 +54,7 @@ class CadastroUsuario extends React.Component{
                                         className="form-control"
                                         id="inputSenha"
                                         nome="senha"
-                                        onChange={e => this.setState({senha: e.target.value})}
+                                        onChange={ e => this.setState( { senha: e.target.value } ) }
                                     />
 
                                 </FormGroup>
@@ -55,13 +63,13 @@ class CadastroUsuario extends React.Component{
                                         className="form-control"
                                         id="imputRepitaSenha"
                                         nome="senha"
-                                        onChange={e => this.setState({senhaRepeticao: e.target.value})}
+                                        onChange={ e => this.setState( { senhaRepeticao: e.target.value } ) }
                                     />
 
                                 </FormGroup>
                                 <br></br>
-                                <button onClick={this.cadastrar} type="button" className="btn btn-success">Cadastrar</button>
-                                <button type="button" className="btn btn-danger">Cancelar</button>
+                                <button onClick={ this.cadastrar } type="button" className="btn btn-success">Cadastrar</button>
+                                <button onClick={ this.cancelar } type="button" className="btn btn-danger">Cancelar</button>
 
                             </div>
                         </div>

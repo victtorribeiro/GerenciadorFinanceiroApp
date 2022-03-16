@@ -1,7 +1,10 @@
-import { toHaveDescription } from "@testing-library/jest-dom/dist/matchers";
 import React from "react";
 import Card from '../components/card'
 import FormGroup from '../components/form-group'
+
+import { withRouter } from 'react-router-dom'
+
+
 class Login extends React.Component{
 
     state = {
@@ -15,12 +18,16 @@ class Login extends React.Component{
         console.log('Senha: ', this.state.senha);
     }
 
+    prepareCadastrar = () => {
+        this.props.history.push('/cadastro-usuarios');
+    }
+
 
     render(){
         return(
 
                 <div className="row">
-                    <div className="col-md-6" style={ {position: 'relative', left: '300px'} }>
+                    <div className="col-md-6" style={ { position: 'relative', left: '300px' } }>
                         <div className="bs-docs-section">
                             <Card title="Login">
                                 <div className="row">
@@ -29,8 +36,8 @@ class Login extends React.Component{
                                             <fieldset>
                                                 <FormGroup label="Email: *" htmlFor="exampleInputEmail1">
                                                     <input type="email" 
-                                                        value={this.state.email} 
-                                                        onChange={e => this.setState({email: e.target.value})}
+                                                        value={ this.state.email } 
+                                                        onChange={ e => this.setState( { email: e.target.value } ) }
                                                         className="form-control" 
                                                         id="exampleInputEmail1" 
                                                         aria-describedby="emailHelp" 
@@ -39,15 +46,16 @@ class Login extends React.Component{
                                                 </FormGroup>
                                                 <FormGroup label="Senha: *" htmlFor="exampleInputPassword1">
                                                     <input type="password"
-                                                        value={this.state.senha}
-                                                        onChange={e => this.setState({senha: e.target.value})}
+                                                        value={ this.state.senha }
+                                                        onChange={ e => this.setState( { senha: e.target.value } ) }
                                                         className="form-control"
                                                         id="exampleInputPassword1"
                                                         placeholder="Password" 
                                                     />
                                                 </FormGroup>
+                                                <br />
                                                 <button onClick={ this.entrar } className="btn btn-success">Entrar</button>
-                                                <button className="btn btn-danger">Cadastrar</button>
+                                                <button onClick={ this.prepareCadastrar } className="btn btn-danger">Cadastrar</button>
                                             </fieldset>
                                         </div>
                                     </div>
@@ -60,4 +68,4 @@ class Login extends React.Component{
     };
 }
 
-export default Login;
+export default withRouter( Login );
