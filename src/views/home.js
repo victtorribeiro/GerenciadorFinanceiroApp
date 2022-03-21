@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class Home extends React.Component {
 
@@ -6,9 +7,22 @@ class Home extends React.Component {
         saldo: 0
     }
 
+    componentDidMount(){
+        const usuarioLogadoString = localStorage.getItem('_usuario_logado')
+        const usuarioLogado = JSON.parse(usuarioLogadoString)
+
+        console.log(usuarioLogadoString)
+        axios.get('http://localhost:8080/api/usuarios/saldo/' + usuarioLogado.id /**ou assim `http://localhost:8080/api/usuarios/saldo/${usuarioLogado.id}`*/)
+            .then(retorno => {
+                this.setState({ saldo: retorno.data })
+            }).catch(error => {
+                console.error(error.retorno)
+            });
+    }
+
     render(){
         return(
-            <div className="">
+            <div className="jumbotron">
                 <h1 className="display-3">Bem vindo!</h1>
                 <p className="lead">Esse é seu sistema de finanças.</p>
                 <p className="lead">Seu saldo para o mês atual é de R$ {this.state.saldo}</p>
