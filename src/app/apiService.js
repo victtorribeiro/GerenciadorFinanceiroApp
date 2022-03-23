@@ -17,17 +17,17 @@ class ApiService {
 
     put(url, objeto){
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.put(url, objeto);
+        return httpClient.put(requestUrl, objeto);
     }
 
     delete(url){
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.delete(url);
+        return httpClient.delete(requestUrl);
     }
     
     get(url){
         const requestUrl = `${this.apiurl}${url}`
-        return httpClient.get(url);
+        return httpClient.get(requestUrl);
     }
 
 }
