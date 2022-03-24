@@ -30,6 +30,7 @@ class Login extends React.Component{
         }).catch( erro => {
             this.setState({mensagemErro: erro.response.data})
         })
+
     }
 
     prepareCadastrar = () => {
@@ -58,7 +59,7 @@ class Login extends React.Component{
                                                         className="form-control" 
                                                         id="exampleInputEmail1" 
                                                         aria-describedby="emailHelp" 
-                                                        placeholder="Digite o Email" 
+                                                        placeholder="Digite o Email." 
                                                     />
                                                 </FormGroup>
                                                 <FormGroup label="Senha: *" htmlFor="exampleInputPassword1">
