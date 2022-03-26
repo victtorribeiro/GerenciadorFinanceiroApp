@@ -3,9 +3,12 @@ import Navbar from '../components/navbar';
 import Rotas from './rotas';
 import 'toastr/build/toastr.min.js'
 
-import 'toastr/build/toastr.min.css'
-import 'bootswatch/dist/flatly/bootstrap.css'
+
+
 import '../custom.css'
+import 'bootswatch/dist/flatly/bootstrap.css'
+import 'toastr/build/toastr.min.css'
+import 'toastr/build/toastr.css'
 
 class App extends React.Component {
   render(){

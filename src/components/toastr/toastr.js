@@ -17,7 +17,7 @@ toastr.options = {
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
   }
-export function mostrarMensagem( titulo, mensagem, tipo){
+export function mostrarMensagem( titulo, mensagem, tipo ){
     toastr[tipo](mensagem,titulo)
 }
 
