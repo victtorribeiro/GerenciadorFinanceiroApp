@@ -9,8 +9,8 @@ class ConsultaLancamentos extends React.Component {
 
     render(){
 
-        const lista = [
-            {label: 'Selecione...', value:''},
+        const meses = [
+            {label: 'SELECIONE...', value:''},
             {label: 'Janeiro', value:'1'},
             {label: 'Fevereiro', value:'2'},
             {label: 'Março', value:'3'},
@@ -24,6 +24,11 @@ class ConsultaLancamentos extends React.Component {
             {label: 'Novembro', value:'11'},
             {label: 'Dezembro', value:'12'},
 
+        ]
+        const tipos = [
+            {label: 'SELECIONE...', value:''},
+            {label: 'DESPESA', value:'1'},
+            {label: 'RECEITA', value:'2'},
         ]
 
         return(
@@ -39,8 +44,11 @@ class ConsultaLancamentos extends React.Component {
                                        placeholder="Digite o ano">
                                 </input>
                             </FormGroup>
-                            <FormGroup htmlFor="inputAno" label="Mês: *">
-                                <SelectMenu className="form-control" lista={lista}></SelectMenu>
+                            <FormGroup htmlFor="inputMes" label="Mês: *">
+                                <SelectMenu className="form-control" lista={meses} />
+                            </FormGroup>
+                            <FormGroup htmlFor="inputTipo" label="Tipo: *">
+                                <SelectMenu className="form-control" lista={tipos} />
                             </FormGroup>
                         </div>
                     </div>
