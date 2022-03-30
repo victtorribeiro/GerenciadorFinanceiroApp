@@ -1,8 +1,9 @@
 import React from "react";
 import { withRouter } from 'react-router-dom'
-import Card from "../components/card";
-import FormGroup from "../components/form-group";
-import SelectMenu from "../components/selectMenu";
+import Card from "../../components/card";
+import FormGroup from "../../components/form-group";
+import SelectMenu from "../../components/selectMenu";
+import LancamentosTable from "./lancamentosTable";
 
 class ConsultaLancamentos extends React.Component {
 
@@ -10,7 +11,7 @@ class ConsultaLancamentos extends React.Component {
     render(){
 
         const meses = [
-            {label: 'SELECIONE...', value:''},
+            {label: 'Selecione ...', value:''},
             {label: 'Janeiro', value:'1'},
             {label: 'Fevereiro', value:'2'},
             {label: 'Março', value:'3'},
@@ -26,9 +27,13 @@ class ConsultaLancamentos extends React.Component {
 
         ]
         const tipos = [
-            {label: 'SELECIONE...', value:''},
+            {label: 'Selecione ...', value:''},
             {label: 'DESPESA', value:'1'},
             {label: 'RECEITA', value:'2'},
+        ]
+
+        const lancamentos = [
+            { id: 1, descricao: 'Salário', valor: 5000, mes: 1, tipo: 'RECEITA', status: 'Efetivado'}
         ]
 
         return(
@@ -50,6 +55,17 @@ class ConsultaLancamentos extends React.Component {
                             <FormGroup htmlFor="inputTipo" label="Tipo: *">
                                 <SelectMenu className="form-control" lista={tipos} />
                             </FormGroup>
+                            <br />
+                            <button onClick={ this.cadastrar } type="button" className="btn btn-success">Buscar</button>
+                            <button onClick={ this.cancelar } type="button" className="btn btn-danger">Cadastrar</button>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="bs-component">
+                            <LancamentosTable lancamentos={lancamentos} />
                         </div>
                     </div>
                 </div>
