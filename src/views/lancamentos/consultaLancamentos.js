@@ -27,6 +27,7 @@ class ConsultaLancamentos extends React.Component {
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
         const lancamentoFiltro = {
             ano: this.state.ano,
+            
             mes: this.state.mes,
             tipo: this.state.tipo,
             usuario: usuarioLogado.id
