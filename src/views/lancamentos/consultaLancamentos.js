@@ -14,6 +14,7 @@ class ConsultaLancamentos extends React.Component {
         ano: '',
         mes: '',
         tipo: '',
+        descricao: '',
         lancamentos: []
 
     }
@@ -29,6 +30,7 @@ class ConsultaLancamentos extends React.Component {
             ano: this.state.ano,
             mes: this.state.mes,
             tipo: this.state.tipo,
+            descricao: this.state.descricao,
             usuario: usuarioLogado.id
         }
 
@@ -100,6 +102,15 @@ class ConsultaLancamentos extends React.Component {
                                             className="form-control" 
                                             lista={tipos} 
                                 />
+                            </FormGroup>
+                            <FormGroup htmlFor="inputDescricao" label="Descrição: *">
+                                <input id="inputDescricao"
+                                       type="text"
+                                       className="form-control" 
+                                       value={this.state.descricao}
+                                       onChange={e => this.setState({descricao: e.target.value})}
+                                       placeholder="Descrição" >
+                                </input>
                             </FormGroup>
 
                             <br />

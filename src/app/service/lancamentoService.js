@@ -22,6 +22,9 @@ class LancamentosService extends ApiService {
         if(lancamentoFiltro.usuario){
             params = `${params}&usuario=${lancamentoFiltro.usuario}`
         }
+        if(lancamentoFiltro.descricao){
+            params = `${params}&usuario=${lancamentoFiltro.descricao}`
+        }
 
         return this.get(params);
     }
