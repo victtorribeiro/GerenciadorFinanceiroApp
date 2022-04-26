@@ -6,6 +6,7 @@ import SelectMenu from "../../components/selectMenu";
 import LancamentosTable from "./lancamentosTable";
 import LancamentosService from "../../app/service/lancamentoService";
 import LocalStorageService from "../../app/service/localStorageService"
+import * as messages from "../../components/toastr/toastr";
 
 class ConsultaLancamentos extends React.Component {
 
@@ -25,6 +26,12 @@ class ConsultaLancamentos extends React.Component {
     }
 
     buscar = () => {
+
+        if(!this.state.ano){
+            messages.mensagemErro('O Preenchimento do campo Ano é obrigatório.')
+            return false;
+        }
+
         const usuarioLogado = LocalStorageService.obterItem('_usuario_logado');
         const lancamentoFiltro = {
             ano: this.state.ano,
@@ -42,6 +49,14 @@ class ConsultaLancamentos extends React.Component {
                 console.log(error)
             })
 
+    }
+
+    editar = (id) => {
+        console.log(id)
+    }
+
+    deletar = (id) => {
+        console.log(id)
     }
 
     
@@ -123,7 +138,11 @@ class ConsultaLancamentos extends React.Component {
                 <div className="row">
                     <div className="col-md-12">
                         <div className="bs-component">
-                            <LancamentosTable lancamentos={this.state.lancamentos} />
+                            <LancamentosTable lancamentos={this.state.lancamentos}
+                                               editAction={this.editar}
+                                               deleteAction={this.deletar}
+                                               
+                                               />
                         </div>
                     </div>
                 </div>
