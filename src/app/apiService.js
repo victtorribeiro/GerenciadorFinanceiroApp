@@ -24,6 +24,8 @@ class ApiService {
         const requestUrl = `${this.apiurl}${url}`
         return httpClient.delete(requestUrl);
     }
+
+    
     
     get(url){
         const requestUrl = `${this.apiurl}${url}`
