@@ -141,7 +141,7 @@ class ConsultaLancamentos extends React.Component {
 
                             <br />
                             <button onClick={ this.buscar } type="button" className="btn btn-success">Buscar</button>
-                            <button onClick={ this.cancelar } type="button" className="btn btn-danger">Cadastrar</button>
+                            <button onClick={ e => this.props.history.push('/cadastro-lancamentos') } type="button" className="btn btn-danger">Cadastrar</button>
                         </div>
                     </div>
                 </div>
