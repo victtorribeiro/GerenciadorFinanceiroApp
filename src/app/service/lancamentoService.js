@@ -36,8 +36,8 @@ class LancamentosService extends ApiService {
     obterListaTipos(){
         return [
             {label: 'Selecione ...', value:''},
-            {label: 'DESPESA', value:'1'},
-            {label: 'RECEITA', value:'2'},
+            {label: 'DESPESA', value:'DESPESA'},
+            {label: 'RECEITA', value:'RECEITA'},
         ]
     }
     obterListaMeses(){
@@ -56,6 +56,10 @@ class LancamentosService extends ApiService {
             {label: 'Novembro', value:'11'},
             {label: 'Dezembro', value:'12'},
         ]
+    }
+
+    salvar(lancamento){
+        return this.post('/salvar', lancamento);
     }
 
 }
