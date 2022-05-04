@@ -57,6 +57,11 @@ class CadastroLancamentos extends React.Component {
             })
     }
 
+    componentDidMount(){
+        const params = this.props.match.params
+        console.log('params: ', params)
+    }
+
     render(){
 
         const tipos = this.service.obterListaTipos();
