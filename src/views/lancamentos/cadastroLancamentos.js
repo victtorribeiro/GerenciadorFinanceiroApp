@@ -19,6 +19,7 @@ class CadastroLancamentos extends React.Component {
         tipo: '',
         status: '',
         usuario: ''
+        
     }
 
     constructor(){
