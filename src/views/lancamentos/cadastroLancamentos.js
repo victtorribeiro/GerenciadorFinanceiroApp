@@ -59,6 +59,32 @@ class CadastroLancamentos extends React.Component {
             })
     }
 
+    atualizar = () => {
+
+        const { descricao, valor, mes, ano, tipo, id, usuario, status } = this.state;
+
+        const lancamento ={
+            descricao,
+            valor,
+            mes,
+            ano,
+            tipo,
+            id,
+            usuario,
+            status
+        }
+
+        this.service
+            .atualizar(lancamento)
+            .then(response => {
+                this.props.history.push('/consulta-lancamentos')
+                messages.mensagemSucesso('Lançamento atualizado com sucesso!')
+            }).catch(error => {
+                messages.mensagemErro(error.response.data)
+            })
+    }
+
+
     componentDidMount(){
         const params = this.props.match.params
         if(params.id){
@@ -156,6 +182,7 @@ class CadastroLancamentos extends React.Component {
                 <div className="row">
                     <div className="col-md-6">
                         <button className="btn btn-success" onClick={this.submit} > Salvar </button>
+                        <button className="btn btn-success" onClick={this.atualizar} > Atualizar </button>
                         <button className="btn btn-danger" onClick={ e => this.props.history.push('/consulta-lancamentos') } > Cancelar </button>
                     </div>
                 </div>
