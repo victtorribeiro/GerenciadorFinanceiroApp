@@ -73,7 +73,6 @@ class CadastroLancamentos extends React.Component {
             usuario,
             status
         }
-
         this.service
             .atualizar(lancamento)
             .then(response => {
