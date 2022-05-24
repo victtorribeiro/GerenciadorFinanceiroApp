@@ -18,7 +18,8 @@ class CadastroLancamentos extends React.Component {
         ano: '',
         tipo: '',
         status: '',
-        usuario: ''
+        usuario: '',
+        atualizando: false
         
     }
 
@@ -89,7 +90,7 @@ class CadastroLancamentos extends React.Component {
         if(params.id){
             this.service.obterPorId(params.id)
                 .then(response => {
-                    this.setState( { ...response.data } )
+                    this.setState( { ...response.data, atualizando: true } )
                 }).catch(error => {
                     messages.mensagemErro(error.response.data)
                 })
@@ -104,7 +105,7 @@ class CadastroLancamentos extends React.Component {
 
 
         return(
-            <Card title="Cadastro de Lançamentos">
+            <Card title={this.state.atualizando ? 'Atualização de Lançamento' : 'Cadastro de Lançamento'}>
                 <div className="row">
                     <div className="col-md-12">
                         <FormGroup id="inputDescricao" label="Descrição: *">
@@ -180,8 +181,13 @@ class CadastroLancamentos extends React.Component {
                 <br />
                 <div className="row">
                     <div className="col-md-6">
-                        <button className="btn btn-success" onClick={this.submit} > Salvar </button>
-                        <button className="btn btn-success" onClick={this.atualizar} > Atualizar </button>
+                        {
+                            this.state.atualizando ? (
+                                <button className="btn btn-success" onClick={this.atualizar} > Atualizar </button>
+                            ) : (
+                                <button className="btn btn-success" onClick={this.submit} > Salvar </button>
+                            )
+                        }
                         <button className="btn btn-danger" onClick={ e => this.props.history.push('/consulta-lancamentos') } > Cancelar </button>
                     </div>
                 </div>
