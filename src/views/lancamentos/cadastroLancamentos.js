@@ -36,18 +36,27 @@ class CadastroLancamentos extends React.Component {
     }
 
     submit = () => {
+            
+            const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
 
-        const usuarioLogado = LocalStorageService.obterItem('_usuario_logado')
+            const { descricao, valor, mes, ano, tipo } = this.state;
+    
+            const lancamento ={
+                descricao,
+                valor,
+                mes,
+                ano,
+                tipo,
+                usuario: usuarioLogado.id
+            }
 
-        const { descricao, valor, mes, ano, tipo } = this.state;
+        try{
+            this.service.validar(lancamento)
 
-        const lancamento ={
-            descricao,
-            valor,
-            mes,
-            ano,
-            tipo,
-            usuario: usuarioLogado.id
+        }catch(erro){
+            const mensagens = erro.mensagens;
+            mensagens.forEach(msg => messages.mensagemErro(msg));
+            return false;
         }
 
         this.service
