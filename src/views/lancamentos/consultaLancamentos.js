@@ -49,7 +49,12 @@ class ConsultaLancamentos extends React.Component {
         this.service
             .consultar(lancamentoFiltro)
             .then( resposta => {
+                const lista = resposta.data;
+                if(lista.length < 1) {
+                    messages.mensagemAlert("Nenhum resultado encontrado.")
+                }
                 this.setState({ lancamentos: resposta.data })
+                
             }).catch( error => {
                 console.log(error)
             })
@@ -160,8 +165,8 @@ class ConsultaLancamentos extends React.Component {
                             </FormGroup>
 
                             <br />
-                            <button onClick={ this.buscar } type="button" className="btn btn-success">Buscar</button>
-                            <button onClick={ this.preparaformulariocadastro } type="button" className="btn btn-danger">Cadastrar</button>
+                            <button onClick={ this.buscar } type="button" className="btn btn-success"> <i className="pi pi-search" /> Buscar</button>
+                            <button onClick={ this.preparaformulariocadastro } type="button" className="btn btn-danger"> <i className="pi pi-plus" /> Cadastrar</button>
                         </div>
                     </div>
                 </div>

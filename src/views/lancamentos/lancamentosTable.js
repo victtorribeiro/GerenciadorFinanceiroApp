@@ -14,24 +14,30 @@ function LancamentosTable (props){
                 <td>{lancamento.status}</td>
                 <td>
                     <button type="button" 
+                        title="Efetivar"
+                        disabled={lancamento.status !== 'PENDENTE'}
                         className="btn btn-success"
                         onClick={ e => props.alterarStatus(lancamento, 'EFETIVADO')} >
-                            Efetivar
+                            <i className="pi pi-check" />
                     </button>
                     <button type="button" 
+                        title="Cancelar"
+                        disabled={lancamento.status !== 'PENDENTE'}
                         className="btn btn-warning"
                         onClick={ e => props.alterarStatus(lancamento, 'CANCELADO')} >
-                            Cancelar
+                            <i className="pi pi-times" />
                     </button>
                     <button type="button" 
+                        title="Editar"
                         className="btn btn-primary"
                         onClick={ e => props.editAction(lancamento.id)} >
-                            Editar
+                            <i className="pi pi-pencil" />
                     </button>
                     <button type="button" 
+                        title="Excluir"
                         className="btn btn-danger" 
                         onClick={e => props.deleteAction(lancamento)} >
-                            Deletar
+                            <i className="pi pi-trash" />
                     </button>
                 </td>
             </tr>
