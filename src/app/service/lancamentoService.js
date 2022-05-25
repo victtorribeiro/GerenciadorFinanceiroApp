@@ -71,6 +71,11 @@ class LancamentosService extends ApiService {
         return this.get(`/buscar-id/${id}`);
     }
 
+    alterarStatus(id, status){
+        return this.put(`/atualizar-status/${id}`, { status })
+    }
+
+
     validar(lancamento){
         const erros = [];
 
