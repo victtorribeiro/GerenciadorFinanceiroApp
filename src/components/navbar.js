@@ -1,5 +1,10 @@
 import React from "react";
 import NavbarItem from "./navbarItem";
+import AuthService from "../app/service/authService";
+
+const deslogar = () => {
+    AuthService.removerUsuarioAutenticado();
+}
 
 function Navbar() {
     return(
@@ -17,7 +22,7 @@ function Navbar() {
                         <NavbarItem href="#/home" label="Home" />
                         <NavbarItem href="#/cadastro-usuarios" label="Usuários" />
                         <NavbarItem href="#/consulta-lancamentos" label="Lançamentos" />
-                        <NavbarItem href="#/login" label="Login" />
+                        <NavbarItem onClick={deslogar} href="#/login" label="Sair" />
                         
                     </ul>
                 </div>
