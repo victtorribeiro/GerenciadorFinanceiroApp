@@ -8,6 +8,7 @@ This project was bootstrapped with
 In the project directory, you can run: 
 
 ### `npm start`
+
 ### `yarn start`
 
 Runs the app in the development mode.\
